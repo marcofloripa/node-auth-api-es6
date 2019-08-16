@@ -12,3 +12,21 @@ export function addUser(req, res) {
         res.status(201).json(newUser);
     });
 }
+
+export function getUsers(req, res) {
+    User.find({}, (error, users) => {
+        if (error) {
+            res.json(error);
+        }
+        res.json(users);
+    });
+}
+
+export function getUser(req, res) {
+    User.findById(req.params.userId, (error, user) => {
+        if (error) {
+            res.json(error);
+        }
+        res.json(user);
+    });
+}
